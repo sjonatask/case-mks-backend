@@ -4,11 +4,11 @@ import { User } from "./entity/User"
 
 export const AppDataSource = new DataSource({
     type: "mysql",
-    host: "localhost",
+    host: process.env.DB_HOST,
     port: 3306,
-    username: "test",
-    password: "test",
-    database: "test",
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_DATA_NAME,
     synchronize: true,
     logging: false,
     entities: [User],

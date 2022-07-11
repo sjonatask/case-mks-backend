@@ -5,6 +5,7 @@ export interface IHashManager {
 
 export interface IAuthenticator {
     generateToken: (args: any) => string
+    getData: (token: string) => any
 }
 
 export interface IGenerateId {

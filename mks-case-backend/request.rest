@@ -1,7 +1,9 @@
 ###
 GET http://localhost:3000/movie/list?order=ASC
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhOThiNmIxLTJjMTAtNGRhMS1hODA3LTg4M2JiNjAzNTUyNiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTc1MDY3MDQsImV4cCI6MTY1NzUwNzYwNH0.Cxptn19M0KtzdCQ_DSLjKsd7CSkLuTIwtntHHna-kTU
-
+###
+GET http://localhost:3000/movie/favorite
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhOThiNmIxLTJjMTAtNGRhMS1hODA3LTg4M2JiNjAzNTUyNiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTc1NzkyMDUsImV4cCI6MTY1NzU4MDEwNX0.0UjmLRalcauAGBnq0AAqdzJQ2CVZ4Y8dU72gInOk590
 ###
 POST http://localhost:3000/user/signup
 Content-Type: application/json
@@ -18,12 +20,12 @@ POST http://localhost:3000/user/login
 Content-Type: application/json
 
 {
-  "email": "test@email.com",
+  "email": "test2@email.com",
   "password": "1234567"
 }
 
 ###
-POST http://localhost:3000/movie/signup
+POST http://localhost:3000/movie/insert
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY0NDJmNTJlLTEyNmMtNDM0Zi1iZTYxLTVkOWFlZWMzYjkxNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NzUwNzU0NiwiZXhwIjoxNjU3NTA4NDQ2fQ.H_XuUiHZdHJDc4_-C_x9hoeMqPUHXleqyijO44Tr0v4
 
@@ -33,6 +35,10 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY0NDJmNTJlLTEyNmMt
   "durationInMinutes": 60,
   "yearOfRelease": 2020
 }
+
+###
+POST http://localhost:3000/movie/favorite/9ce70ba4-43a6-495e-9cbf-f941e4b6600f
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhOThiNmIxLTJjMTAtNGRhMS1hODA3LTg4M2JiNjAzNTUyNiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTc1NzU5NDgsImV4cCI6MTY1NzU3Njg0OH0.EdybYEeQskpFMXBcMy19zSOQs2LyFb-YpyaOCgm_ZvE
 
 ###
 PUT http://localhost:3000/movie/edit

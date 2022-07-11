@@ -12,7 +12,7 @@ const authenticator = new Authenticator();
 const movieBusiness = new MovieBusiness(idGenerator, authenticator);
 
 export class MovieController{
-    async signup(req: Request, res: Response){
+    async input(req: Request, res: Response){
         try {
             const { title, description, durationInMinutes, yearOfRelease } = req.body;
             const token = req.headers.authorization as string;
@@ -33,7 +33,7 @@ export class MovieController{
                 token
             }
 
-            await movieBusiness.signup(input)
+            await movieBusiness.input(input)
             
             res.status(201).send({message: "Movie created with success"});
         }catch(error: any){
@@ -50,7 +50,7 @@ export class MovieController{
                 throw new NoLog;
             }
 
-            const movies = await movieBusiness.getAll(order);
+            const movies = await movieBusiness.getAll(order, token);
 
             res.status(200).send({message: movies})
         }catch(error: any){
@@ -106,6 +106,60 @@ export class MovieController{
             res.status(200).send({message: "Movie deleted with success"});
         }catch(error: any){
            res.status(error.code).send({ error: error.message });
+        }
+    }
+
+    async registerFavMovie(req: Request, res: Response){
+        try {
+            const movieId = req.params.id;
+            const token = req.headers.authorization as string;
+
+            if(!token){
+                throw new NoLog;
+            }
+
+            if(!movieId){
+                throw new EmptyFields();
+            }
+
+            await movieBusiness.registerFavMovie(movieId, token);
+
+            res.status(200).send({message: "favorite movie registered with success"});
+        }catch(error: any){
+            res.status(error.code).send({ error: error.message });
+        }
+    }
+
+    async getFavMovies(req: Request, res: Response){
+        try {
+            const token = req.headers.authorization as string;
+
+            if(!token){
+                throw new NoLog;
+            }
+
+            const movie = await movieBusiness.getFavMovies(token);
+
+            res.status(200).send({message: movie})
+        }catch(error: any){
+            res.status(500).send({ error: error.message });
+        }
+    }
+
+    async deleteFavMovie(req: Request, res: Response){
+        try {
+            const token = req.headers.authorization as string;
+            const movieId = req.params.id;
+
+            if(!token){
+                throw new NoLog;
+            }
+
+            const movie = await movieBusiness.deleteFavMovie(movieId, token);
+
+            res.status(200).send({message: "favorite movie deleted with success"});
+        }catch(error: any){
+            res.status(500).send({ error: error.message });
         }
     }
 }

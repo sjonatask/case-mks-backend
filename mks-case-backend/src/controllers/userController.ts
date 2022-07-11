@@ -12,8 +12,6 @@ const authenticator = new Authenticator();
 const userBussines = new UserBussines(idGenerator, hashManager, authenticator)
 
 export class UserController{
-   
-
     async signup(req: Request, res: Response){
         try {
             const { name, email, password, role } = req.body;
@@ -32,6 +30,27 @@ export class UserController{
             const token = await userBussines.signup(input);
 
             res.status(201).send({ token })
+        }catch(error: any){
+            res.status(400).send({ error: error.message });
+        }
+    }
+
+    async login(req: Request, res: Response){
+        try {
+            const { email, password } = req.body;
+
+            if(!email || !password){
+               throw new EmptyFields();
+            };
+
+            const input = {
+                email,
+                password
+            };
+
+            const token = await userBussines.login(input);
+
+            res.status(200).send({ token })
         }catch(error: any){
             res.status(400).send({ error: error.message });
         }

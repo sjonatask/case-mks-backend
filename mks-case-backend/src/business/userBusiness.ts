@@ -9,7 +9,12 @@ import {
     InvalidName,
     InvalidPassword 
 } from "../error/customError"
-import { User } from "../model/user";
+import { 
+    UserModel,
+    userInput,
+    userInputDTO,
+    userLoginInput
+} from "../model/user";
 
 export class UserBussines{
     constructor(
@@ -18,7 +23,7 @@ export class UserBussines{
         private authenticator: IAuthenticator
     ){ }
 
-    async signup(user: any): Promise<string>{
+    async signup(user:userInput): Promise<string>{
         if(user.name.length <3){
             throw new InvalidName();
         }
@@ -31,11 +36,11 @@ export class UserBussines{
             throw new InvalidEmail();
         }
 
-        let role = User.stringToUserRole(user.role);
+        let role = UserModel.stringToUserRole(user.role);
         const id = this.idGenerator.generateId();
         const hashPassword = await this.hashGenerator.hash(user.password);
         
-        const input = {
+        const input:userInputDTO = {
             id,
             name: user.name,
             email: user.email,
@@ -54,5 +59,28 @@ export class UserBussines{
         })
 
         return token
+    }
+
+    async login(user:userLoginInput): Promise<any>{
+
+        if(!user.email.includes("@")){
+            throw new InvalidEmail();
+        }
+
+        const userDataBase = new UserDataBase();
+
+        const userFromDB = await userDataBase.getUserByEmail(user.email);
+        const isValidPassword = await this.hashGenerator.compare(user.password, userFromDB.password);
+
+        if(!isValidPassword){
+            throw new InvalidPassword();
+        }
+
+        const token = this.authenticator.generateToken({
+            id: userFromDB.id,
+            role: userFromDB.role
+        })
+
+        return token;
     }
 }

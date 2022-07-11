@@ -1,16 +1,25 @@
-import dotenv from "dotenv";
-import {AddressInfo} from "net";
-import express from "express";
+require("dotenv").config();
+import { AddressInfo } from "net";
+import express = require('express');
+import { AppDataSource } from "../data-source";
 
-dotenv.config();
+AppDataSource
+.initialize()
+.then(() => {
+  console.log("Data Source has been initialized!")
+})
+.catch((err) => {
+  console.error("Error during Data Source initialization:", err)
+})
+
 export const app = express();
 app.use(express.json());
 
 const server = app.listen(3000, () => {
-    if (server) {
-      const address = server.address() as AddressInfo;
-      console.log(`Servidor rodando em http://localhost:${address.port}`);
-    } else {
-      console.error(`Falha ao rodar o servidor.`);
-    }
+  if (server) {
+    const address = server.address() as AddressInfo;
+    console.log(`Server runing in http://localhost:${address.port}`);
+  } else {
+    console.error(`Error during server initialization`);
+  }
 });

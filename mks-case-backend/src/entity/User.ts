@@ -1,13 +1,13 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
-@Entity()
+@Entity("MKS_USERS")
 export class User {
 
     @PrimaryGeneratedColumn()
     id: string
 
     @Column()
-    nickName: string
+    name: string
 
     @Column()
     password: string
@@ -15,4 +15,6 @@ export class User {
     @Column()
     email: string
 
+    @Column()
+    role: string
 }

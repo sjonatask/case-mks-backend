@@ -1,0 +1,48 @@
+###
+GET http://localhost:3000/movie/list?order=ASC
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhOThiNmIxLTJjMTAtNGRhMS1hODA3LTg4M2JiNjAzNTUyNiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTc1MDY3MDQsImV4cCI6MTY1NzUwNzYwNH0.Cxptn19M0KtzdCQ_DSLjKsd7CSkLuTIwtntHHna-kTU
+
+###
+POST http://localhost:3000/user/signup
+Content-Type: application/json
+
+{
+  "name": "test2",
+  "email": "test2@email.com",
+  "password": "1234567",
+  "role": "NORMAL"
+}
+
+###
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+  "email": "test@email.com",
+  "password": "1234567"
+}
+
+###
+POST http://localhost:3000/movie/signup
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY0NDJmNTJlLTEyNmMtNDM0Zi1iZTYxLTVkOWFlZWMzYjkxNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NzUwNzU0NiwiZXhwIjoxNjU3NTA4NDQ2fQ.H_XuUiHZdHJDc4_-C_x9hoeMqPUHXleqyijO44Tr0v4
+
+{
+  "title": "teste do filme 2",
+  "description": "teste do filme 2",
+  "durationInMinutes": 60,
+  "yearOfRelease": 2020
+}
+
+###
+PUT http://localhost:3000/movie/edit
+Content-Type: application/json
+Authorization: 
+
+{
+  "movieId": "9ce70ba4-43a6-495e-9cbf-f941e4b6600f",
+  "title": "testando o edit",
+  "description": "testando o edit",
+  "durationInMinutes": 160,
+  "yearOfRelease": 2000
+}

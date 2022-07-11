@@ -1,20 +1,20 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
-@Entity("MKS_USERS")
-export class User {
+@Entity("MKS_MOVIE")
+export class Movie {
 
     @PrimaryGeneratedColumn()
     id: string
 
     @Column()
-    name: string
+    title: string
 
     @Column()
-    password: string
+    description: string
 
     @Column()
-    email: string
+    duration_in_minutes: number
 
     @Column()
-    role: string
+    year_of_release: number
 }

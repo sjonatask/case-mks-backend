@@ -48,24 +48,12 @@ export class NoLog extends CustomError {
 
 export class UserNotFound extends CustomError {
     constructor() {
-        super("User not Found", 400);
+        super("User not Found", 404);
     }
 }
 
-export class BandNotFound extends CustomError {
+export class UserAlreadyExists extends CustomError {
     constructor() {
-        super("Band not Found", 400);
-    }
-}
-
-export class InvalidTime extends CustomError {
-    constructor() {
-        super("Invalid time", 400)
-    }
-}
-
-export class InvalidShowTime extends CustomError {
-    constructor() {
-        super("Invalid day of week and time", 400)
+        super("User already exists", 409);
     }
 }

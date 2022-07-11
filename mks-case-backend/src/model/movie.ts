@@ -77,6 +77,12 @@ export interface movieEditInput {
     token: string;
 }
 
+export interface favMovieInputDTO {
+    id: string
+    movie_id: string;
+    user_id: string;
+}
+
 
 export enum Order {
     ASC = 'ASC',

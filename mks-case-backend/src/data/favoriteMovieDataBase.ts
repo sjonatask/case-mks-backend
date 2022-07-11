@@ -1,6 +1,9 @@
 import { FavoriteMovie } from './../entity/FavoriteMovie';
 import {AppDataSource} from "../data-source"
-import { favMovieInputDTO, MovieModel } from '../model/movie';
+import { 
+    favMovieInputDTO,
+    MovieModel
+} from '../model/movie';
 
 export class FavoriteMovieDataBase {
     async register(favoriteMovie: favMovieInputDTO):Promise<void>{

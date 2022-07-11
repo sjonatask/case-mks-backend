@@ -2,7 +2,10 @@ import { Order } from './../model/movie';
 import { Request, Response } from "express";
 import { Authenticator } from "../services/authenticator";
 import { IdGenerator } from "../services/generatorID";
-import { EmptyFields, NoLog } from "../error/customError";
+import {
+    EmptyFields,
+    NoLog
+} from "../error/customError";
 import { MovieBusiness } from "../business/movieBusiness";
 
 

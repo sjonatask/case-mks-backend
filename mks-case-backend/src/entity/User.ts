@@ -1,4 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    OneToMany
+} from "typeorm"
 
 @Entity("MKS_USERS")
 export class User {

@@ -1,7 +1,10 @@
 import {AppDataSource} from "../data-source"
 import { Movie } from "../entity/Movie"
 import { movieInputDTO } from "../model/movie";
-import { MovieModel, Order } from "../model/movie";
+import { 
+    MovieModel,
+    Order
+} from "../model/movie";
 
 export class MovieDataBase {
     async input(movie: movieInputDTO):Promise<void>{

@@ -87,4 +87,25 @@ export class MovieController{
             res.status(error.code).send({ error: error.message });
         }
     }
+
+    async delete(req: Request, res: Response){
+        try {
+            const id = req.params.id;
+            const token = req.headers.authorization as string;
+
+            if(!token){
+                throw new NoLog;
+            }
+
+            if(!id){
+                throw new EmptyFields();
+            }
+
+            await movieBusiness.delete(id, token);
+
+            res.status(200).send({message: "Movie deleted with success"});
+        }catch(error: any){
+           res.status(error.code).send({ error: error.message });
+        }
+    }
 }

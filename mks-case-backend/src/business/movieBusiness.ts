@@ -8,7 +8,7 @@ import {
     IGenerateId
 } from "./ports";
 import { MovieDataBase } from "../data/movieDataBase";
-import { UnauthorizedUser } from '../error/customError';
+import { MovieNotFound, UnauthorizedUser } from '../error/customError';
 
 export class MovieBusiness{
     constructor(
@@ -64,5 +64,15 @@ export class MovieBusiness{
         }
 
         await new MovieDataBase().edit(input);
+    }
+
+    async delete(id: string, token: string):Promise<void>{
+
+        const acessToken = this.authenticator.getData(token);
+        if(acessToken.role !== 'ADMIN'){
+            throw new UnauthorizedUser()
+        }
+
+        const result = await new MovieDataBase().delete(id);
     }
 }

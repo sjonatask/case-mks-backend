@@ -57,3 +57,9 @@ export class UserAlreadyExists extends CustomError {
         super("User already exists", 409);
     }
 }
+
+export class MovieNotFound extends CustomError {
+    constructor() {
+        super("Movie not Found", 404);
+    }
+}

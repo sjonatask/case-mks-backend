@@ -13,7 +13,7 @@ Neste repositório foi feito uma CRUD de um catálogo de filmes como um challeng
  7. Jsonwebtoken
  8. Dotenv
  9. Mysql 
- 10. Swagger
+ 10. Postman
  
  
 

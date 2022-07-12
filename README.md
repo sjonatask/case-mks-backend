@@ -67,6 +67,4 @@ CREATE TABLE IF NOT EXISTS MKS_FAVORITE_MOVIE (
 
 ## Documentação
 
-
-## Link do Deploy
- https://mks-challenger1.herokuapp.com/
+https://documenter.getpostman.com/view/18694716/UzJQrEuc
